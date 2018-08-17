@@ -1,0 +1,14 @@
+.header {
+  color: green;
+}
+
+.header__text {
+  color: darkcyan;
+}
+
+h1 {
+  color: var(--main-title-color);
+  font-family: var(--main-title-font);
+  font-weight: 700;
+}
+
