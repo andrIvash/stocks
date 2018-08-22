@@ -1,18 +1,22 @@
+// main file
 const express = require('express');
-const webpack = require('webpack');
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
+const path = require('path');
+const HttpError = require('./server/middleware/error');
 
 const app = express();
-const config = require('./webpack.config.js');
-const compiler = webpack(config);
 
-app.use(webpackDevMiddleware(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
-app.use(webpackHotMiddleware)(compiler);
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.listen(3002, function () {
-  console.log('Example app listening on port 3002!\n');
+// add routes
+require('./server/routes')(app);
+
+app.use('*', (req, res) => {
+  throw new HttpError('Not found. API is on http://localhost:3000/api/v1.0', 404);
 });
+
+app.use(function (err, req, res, next) {
+  res.status(err.status || 500).json({status: err.status, message: err.message});
+});
+
+app.listen(3000, () => console.log('Example app listening on port 3000!'));
