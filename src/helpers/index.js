@@ -3,7 +3,7 @@ export default {
     UPLOAD: 'http://localhost:3005/api/v1.0/upload',
   },
   sendData: (url, data) => {
-    return fetch(ev.target.action,
+    return fetch(url,
       {
         method: 'POST',
         cache: 'no-cache',
@@ -16,7 +16,7 @@ export default {
         }
         throw new Error('Network response was not ok.');
       }).then((myJson) => {
-        retrun JSON.stringify(myJson);
+        return JSON.stringify(myJson);
       }).catch(function(error) {
         console.log(`There has been a problem with your fetch operation: ${error.message}`);
       });
