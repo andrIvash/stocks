@@ -10,13 +10,15 @@ export default {
         credentials: 'same-origin',
         body: data
       })
-      .then(function(response) {
-        if(response.ok) {
-          return response.json();
+      .then(response => {
+        return response.json();
+      }).then( myJson => {
+        if (myJson.status === 200 || myJson.status === 400) {
+          return myJson
         }
-        throw new Error('Network response was not ok.');
-      }).then((myJson) => {
-        return JSON.stringify(myJson);
+        else {
+          throw new Error('Network response was not ok.');
+        }
       }).catch(function(error) {
         console.log(`There has been a problem with your fetch operation: ${error.message}`);
       });
