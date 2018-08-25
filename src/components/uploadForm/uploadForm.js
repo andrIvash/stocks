@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import helpers from '../../helpers';
 
@@ -11,7 +10,9 @@ class UploadForm extends Component {
     
     formData.append('file', this.refs._file.files[0]);
     
-    helpers.sendData(ev.target.action, formData).then(result => {
+    helpers
+    .sendData(ev.target.action, formData)
+    .then(result => {
       console.log(result);
     });
   }

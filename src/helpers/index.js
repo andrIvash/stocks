@@ -12,14 +12,16 @@ export default {
       })
       .then(response => {
         return response.json();
-      }).then( myJson => {
-        if (myJson.status === 200 || myJson.status === 400) {
-          return myJson
+      })
+      .then( resJson => {
+        if (resJson.message) {
+          return resJson;
         }
         else {
           throw new Error('Network response was not ok.');
         }
-      }).catch(function(error) {
+      })
+      .catch( error => {
         console.log(`There has been a problem with your fetch operation: ${error.message}`);
       });
   }
