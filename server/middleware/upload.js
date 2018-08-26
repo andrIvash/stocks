@@ -1,10 +1,11 @@
 // file upload middleware
-
 const mime = require('mime-types');
 const multer = require('multer');
 const config = require('../config');
 
-const HttpError = require('../middleware/error');
+const HttpError = require('./error');
+const winston = require('./winston');
+
 const csvDir = config().get('csvDir');
 let uploadFileName = null;
 
@@ -23,7 +24,7 @@ const upload = multer({
   storage : storage,
   fileFilter: (req, file, callback) => {
     const ext = mime.extension(file.mimetype);
-    console.log(ext);
+    winston.info('load file')
     if(ext !== 'csv') {
       return callback(new HttpError('Only csv are allowed', 400))
     }
@@ -38,7 +39,6 @@ module.exports = (req, res, next) => {
   upload(req, res, (err) => {
     if (err) {
       err = err.status ? err : new HttpError(err.message, 500);
-      console.log('___', err);
       return next(err);
     }
     res.locals = { uploadFileName };
