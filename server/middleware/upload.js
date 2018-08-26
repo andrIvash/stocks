@@ -1,8 +1,11 @@
+// file upload middleware
+
 const mime = require('mime-types');
 const multer = require('multer');
+const config = require('../config');
 
 const HttpError = require('../middleware/error');
-const csvDir = './server/uploads';
+const csvDir = config().get('csvDir');
 let uploadFileName = null;
 
 const storage = multer.diskStorage({

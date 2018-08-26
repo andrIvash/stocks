@@ -1,8 +1,11 @@
+// file transform middleware ( from csv to json)
+
 const path = require('path');
 const csv = require('csvtojson');
+const config = require('../config');
 
 const HttpError = require('../middleware/error');
-const csvDir = './server/uploads';
+const csvDir = config().get('csvDir');
 
 module.exports = (req, res, next) => {
   const { uploadFileName } =  res.locals;

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "webpack-dev-server --hot --inline --env=development --config webpack.dev.babel.js",
     "build": "NODE_ENV=production webpack --config webpack.prod.babel.js",
-    "serv": "nodemon ./server.js ",
+    "serv": "nodemon ./server.js --env=development",
+    "server": "nodemon ./server.js --env=production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -41,10 +42,13 @@
     "webpack-merge": "^4.1.3"
   },
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "csvtojson": "^2.0.8",
     "express": "^4.16.3",
     "mime-types": "^2.1.19",
     "multer": "^1.3.1",
-    "nodemon": "^1.18.3"
+    "nconf": "^0.10.0",
+    "nodemon": "^1.18.3",
+    "winston": "^3.0.0"
   }
 }
