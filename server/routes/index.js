@@ -9,6 +9,9 @@ module.exports = (app) => {
     require('../middleware/upload'),
     require('../middleware/filetransform'));  
   
+  router.get('/prices', 
+    require('../middleware/prices')); 
+
   router.get('/', (req, res) => {
     throw new HttpError('api ok, please choose a proper request', 400);
   });

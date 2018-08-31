@@ -42,6 +42,7 @@ module.exports = (req, res, next) => {
       return next(err);
     }
     res.locals = { uploadFileName };
+    
     next()
   });
 };

@@ -13,6 +13,9 @@ app.use(express.json());
 // request logging
 app.use(morgan('combined', { stream: winston.stream }));
 
+// DB
+require('./server/middleware/postgres');
+
 // add routes
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', config().get('frontAccess'));
