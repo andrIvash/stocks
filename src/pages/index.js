@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from '../components/header/header';
 import { Footer } from '../components/footer';
+import UploadForm from '../components/uploadForm/uploadForm';
 // import '../styles/app.css';
 
 class App extends Component {
@@ -28,6 +29,8 @@ class App extends Component {
               </a>
             </li>
           </ul>
+          
+          <UploadForm />
         </main>
 
         <Footer className="page__footer" />

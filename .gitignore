@@ -18,6 +18,12 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Data files
+*.csv
+
+# Log file
+*.log
+
 # Created by .gitignore support plugin (hsz.mobi)
 ### NetBeans template
 nbproject/

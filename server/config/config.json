@@ -1,0 +1,6 @@
+{
+  "port": 3005,
+  "frontAccess": "http://localhost:3000",
+  "apiAddress": "http://localhost:3005",
+  "csvDir": "./server/uploads"
+}
