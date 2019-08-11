@@ -10,7 +10,7 @@ console.log('devMode', devMode);
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: {
-    app: ['./app.js'],
+    app: ['./app.test.js'],
   },
   output: {
     filename: 'assets/scripts/[name].[hash].js',
